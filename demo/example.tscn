@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://dh0oj81pufivs"]
+[gd_scene load_steps=3 format=3 uid="uid://dh0oj81pufivs"]
 
 [ext_resource type="Script" uid="uid://bj6g7cjexby2b" path="res://example.gd" id="1_jdh55"]
+[ext_resource type="PackInMesh" uid="uid://eib3atwgjuge" path="res://new_pack_in_mesh.tres" id="2_n51mc"]
 
 [node name="Node" type="Node"]
 script = ExtResource("1_jdh55")
+packed_mesh = ExtResource("2_n51mc")

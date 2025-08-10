@@ -1,0 +1,8 @@
+[gd_resource type="PackInMesh" format=3 uid="uid://eib3atwgjuge"]
+
+[resource]
+mesh_list = Array[Mesh]([null])
+_blend_shape_names = null
+_surfaces = null
+blend_shape_mode = null
+custom_aabb = null
