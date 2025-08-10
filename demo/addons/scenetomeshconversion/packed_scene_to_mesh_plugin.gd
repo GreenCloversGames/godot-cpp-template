@@ -32,18 +32,17 @@ func generate(p_scene: Resource):
 	# Get the verticies of the mesh
 	var surface_ids : Array = []
 	var arrays = []
-	
+	var materials = []
 	for mesh_data in meshes:
 		
 		for surface_id in range(mesh_data.mesh.get_surface_count()):
 			var mesh_array = mesh_data.get_transformed_mesh_data_from_surface_index(surface_id)
 			arrays.append(mesh_array)
-			
-	for array in arrays:
-		mesh.add_surface_from_arrays(Mesh.PrimitiveType.PRIMITIVE_TRIANGLES, array)
-	
-	for surface_index in range(mesh.get_surface_count()):
-		mesh.surface_set_material(surface_index, StandardMaterial3D.new())
+			materials.append(mesh_data.mesh.surface_get_material(surface_id))
+
+	for index in len(arrays):
+		mesh.add_surface_from_arrays(Mesh.PrimitiveType.PRIMITIVE_TRIANGLES, arrays[index])
+		mesh.surface_set_material(index, materials[index])
 	ResourceSaver.save(mesh, p_scene.resource_path + ".mesh")
 
 class TransformedMeshData:
@@ -58,6 +57,8 @@ class TransformedMeshData:
 		return mesh.surface_get_arrays(p_index)
 
 	func get_transformed_mesh_data(mesh_data):
+		#TODO: Mostly seems to work, but the normals are messed up. Maybe need to 
+		# apply the transformation to the normals as well some how?
 		var mesh_vertex = mesh_data[0]
 		mesh_vertex = mesh_vertex * transform
 		mesh_data[0] = mesh_vertex
@@ -71,6 +72,7 @@ class TransformedMeshData:
 		node = node.get_parent_node_3d()
 		while node:
 			print(transform)
-			transform = node.transform * transform.inverse()
+			transform = node.transform.inverse() * transform
 			node = node.get_parent_node_3d()
 		return transform
+	
