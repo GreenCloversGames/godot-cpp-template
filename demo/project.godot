@@ -13,3 +13,11 @@ config_version=5
 config/name="godot cpp template"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
+
+[debug]
+
+gdscript/warnings/exclude_addons=false
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/scenetomeshconversion/plugin.cfg")

@@ -1,7 +1,9 @@
-[gd_resource type="PackInMesh" format=3 uid="uid://eib3atwgjuge"]
+[gd_resource type="PackInMesh" load_steps=2 format=3 uid="uid://eib3atwgjuge"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_4wmbg"]
 
 [resource]
-mesh_list = Array[Mesh]([null])
+mesh_list = Array[Mesh]([SubResource("ArrayMesh_4wmbg")])
 _blend_shape_names = null
 _surfaces = null
 blend_shape_mode = null
